@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export const Button = ( name, buttonFetch ) => {
   return (
-    <button onClick={() => { buttonFetch( name ); }}></button>
+    <button onClick={() => { buttonFetch( name ); }}> {name.name} </button>
   );
 };
 

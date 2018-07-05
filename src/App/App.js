@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import ButtonContainer from '../ButtonContainer/ButtonContainer';
+import { ButtonContainer } from '../ButtonContainer/ButtonContainer';
 import './App.css';
 
 class App extends Component {
 
-
-
-buttonFetch = (name) => {
+buttonFetch = (/*name*/) => {
   // fetch(name)
 };
 
