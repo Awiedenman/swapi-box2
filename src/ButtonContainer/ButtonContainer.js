@@ -2,25 +2,25 @@ import React from 'react';
 import { Button } from '../Button/Button';
 import PropTypes from 'prop-types';
 
-export const ButtonContainer = ( { fetchStarWarsData  } ) => {
+export const ButtonContainer = ( { setCategory  } ) => {
   return (
     <div>
       <Button 
         name='People'
-        fetchStarWarsData ={ fetchStarWarsData  }
+        setCategory ={ setCategory  }
       />
       <Button 
         name='Planets'
-        fetchStarWarsData ={ fetchStarWarsData  }
+        setCategory ={ setCategory  }
       />
       <Button 
         name='Vehicles'
-        fetchStarWarsData ={ fetchStarWarsData  }
+        setCategory ={ setCategory  }
       />
     </div>
   );
 };
 
 ButtonContainer.propTypes = {
-  fetchStarWarsData: PropTypes.func
+  setCategory: PropTypes.func
 };

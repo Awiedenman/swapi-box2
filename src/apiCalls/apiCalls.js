@@ -1,6 +1,6 @@
 import { cleanFilmData } from '../Cleaner/Cleaner';
 
-export const filmFetch = async () => {
+export const filmFetch = async ( category) => {
   const randomNum = Math.floor(Math.random() * 6) +1;
   const url = `https://swapi.co/api/films/${randomNum}`;
   try {
