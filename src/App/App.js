@@ -4,7 +4,8 @@ import './App.css';
 
 class App extends Component {
 
-buttonFetch = (/*name*/) => {
+buttonFetch = ( name) => {
+  console.log( 'click', name );
   // fetch(name)
 };
 
