@@ -9,7 +9,10 @@ class App extends Component {
     super( props );
     this.state = {
       category: 'films',
-      openingFilm: {}
+      openingFilm: {},
+      people: [],
+      planets: [],
+      vehicles: []
     };
   }
   
