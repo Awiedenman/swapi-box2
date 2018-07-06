@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Button = ( name, buttonFetch ) => {
+export const Button = ( { name, setCategory } ) => {
   return (
-    <button onClick={() => { buttonFetch( name ); }}> {name.name} </button>
+    <button onClick={()=> setCategory( name ) }> {name} </button>
   );
 };
 
 Button.propTypes = {
   name: PropTypes.string,
-  buttonFetch: PropTypes.func
+  setCategory: PropTypes.func
 };

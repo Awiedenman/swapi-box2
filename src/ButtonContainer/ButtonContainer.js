@@ -2,25 +2,25 @@ import React from 'react';
 import { Button } from '../Button/Button';
 import PropTypes from 'prop-types';
 
-export const ButtonContainer = ( {buttonFetch} ) => {
+export const ButtonContainer = ( { setCategory  } ) => {
   return (
     <div>
       <Button 
-        name='People'
-        buttonFetch={ buttonFetch }
+        name='people'
+        setCategory ={ setCategory  }
       />
       <Button 
-        name='Planets'
-        buttonFetch={ buttonFetch }
+        name='planets'
+        setCategory ={ setCategory  }
       />
       <Button 
-        name='Vehicles'
-        buttonFetch={ buttonFetch }
+        name='vehicles'
+        setCategory ={ setCategory  }
       />
     </div>
   );
 };
 
 ButtonContainer.propTypes = {
-  buttonFetch: PropTypes.func
+  setCategory: PropTypes.func
 };
