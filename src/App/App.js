@@ -23,9 +23,12 @@ class App extends Component {
     // fetch(name)
   // };
 
-  setCategory = ( name ) => {
-    this.setState({ category: name});
-    // this.setState({ [ name : ]})
+  setCategory = async( name ) => {
+    console.log(name)
+    this.setState({ category: [name]});
+    console.log(this.state);
+    const categoryData = await starWarsData(name);
+    await this.setState({ [name] : [...categoryData]});
   }
 
   async componentDidMount() {

@@ -7,12 +7,16 @@ export const starWarsData = async ( category ) => {
     const response = await fetch(url);
     // console.log(response);
     const data = await response.json();
-    // console.log(data);
+    console.log(data);
     return await cleaner( data, category);
   } catch ( error ) {
     throw new Error(`${error.message}`);
   }
 };
+
+// const
+
+
 
 // export const filmFetch = async () => {
 //   const randomNum = Math.floor(Math.random() * 6) + 1;

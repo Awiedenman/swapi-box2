@@ -1,40 +1,48 @@
 
 // import { filmFetch } from '../apiCalls/apiCalls';
-var cleaner = ( data, category ) => {
+const cleaner = ( data, category ) => {
   // console.log(data)
   switch (category) {
     
-    case 'films':
+  case 'films':
 
-    var cleanFilms = data.results.map( film  => { 
+    var cleanFilmsData = data.results.map( film  => { 
       // console.log(film)
       return {
-
         'title': film.title,
         'opening_crawl': film.opening_crawl,
         'release_date': film.release_date
       };
+    });
+    return cleanFilmsData;
+  
+  case 'people':
+
+    var cleanPeopleData = data.results.map((person) => {
+      return {
+        'name': person.name,
+        'data': {
+          'name': person.name,
+          'homeworld': person.homeworld,
+          'species': person.species.map( specie => {
+          //make fetch here,
+          }),
+          'population_of_homeworld': person.homeworld
+        }
+      };
     
     });
-    return cleanFilms;
-}
+    return cleanPeopleData;
+
+    case 'planets':
+
+    
+
+  }
 };
 
-  export default cleaner;
-  
-  
-// const cleanPeopleData = mockPeopleData.results.map((person) => {
-//   return {
-//     [person.name]: {
-//       'name': person.name,
-//       'homeworld': person.homeworld,
-//       'species': person.species.map( specie => {
-//         //make fetch here,
-//       }),
-//       'population_of_homeworld': person.homeworld,
-//     }
-//   }
-// });
+export default cleaner;
+
 
 // export const cleanPlanetData = mockPlanetsData.results.map(planet => {
 //   return {
@@ -50,7 +58,3 @@ var cleaner = ( data, category ) => {
 //     }
 //   }
 // })
-
-
-  
-

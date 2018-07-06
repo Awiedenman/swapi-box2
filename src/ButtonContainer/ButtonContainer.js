@@ -6,15 +6,15 @@ export const ButtonContainer = ( { setCategory  } ) => {
   return (
     <div>
       <Button 
-        name='People'
+        name='people'
         setCategory ={ setCategory  }
       />
       <Button 
-        name='Planets'
+        name='planets'
         setCategory ={ setCategory  }
       />
       <Button 
-        name='Vehicles'
+        name='vehicles'
         setCategory ={ setCategory  }
       />
     </div>
