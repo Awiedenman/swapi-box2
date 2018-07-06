@@ -16,20 +16,13 @@ class App extends Component {
       errorStatus: ''
     };
   }
-  
-
-  // fetchStarWarsData = ( name ) => {
-  // fetchData(name)
-  // console.log( 'click', name );
-  // fetch(name)
-  // };
 
   setCategory = async( name ) => {
     // console.log(name)
     await this.setState({ category: name});
     console.log(this.state);
     const categoryData = await starWarsData(name);
-    await this.setState({ [name] : [...categoryData]});
+    await this.setState({ [name] : [...categoryData], openingFilm : {}});
   }
 
   async componentDidMount() {
@@ -50,9 +43,10 @@ class App extends Component {
             setCategory ={ this.setCategory  }
           />
         </header>
+        {this.state.openingFilm && 
         <Landing 
           films ={ this.state.openingFilm }
-        />
+        />}
         <p className="App-intro"></p>
         {/* <CardContainer />  */}
       </div>
