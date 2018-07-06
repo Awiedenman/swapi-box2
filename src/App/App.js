@@ -51,9 +51,9 @@ class App extends Component {
         />}
         <p className="App-intro"></p>
         <CardContainer 
-          peopleInfo={ this.state.people }
-          planetInfo={ this.state.planets }
-          vehiclesInfo={ this.state.vehicle }
+          peopleInfo={ this.state[this.state.category] }
+          // planetInfo={ this.state.planets }
+          // vehiclesInfo={ this.state.vehicle }
         /> 
       </div>
     );

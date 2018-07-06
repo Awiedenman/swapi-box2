@@ -22,12 +22,9 @@ const cleaner = ( data, category ) => {
     var cleanPeopleData = data.results.map( async(person) => {
       return {
         'name': person.name,
-        'data': {
-          'name': person.name,
-          'homeworld': await personHomeworld(person.homeworld),
-          'species': await personHomeworldSpecies(person.species),
-          'population_of_homeworld':await personHomeworldPopulation(person.homeworld)
-        }
+        'homeworld': await personHomeworld(person.homeworld),
+        'species': await personHomeworldSpecies(person.species),
+        'population_of_homeworld':await personHomeworldPopulation(person.homeworld)
       };
     });
     // console.log(cleanPeopleData)
@@ -66,9 +63,10 @@ const cleaner = ( data, category ) => {
         'NumberOfPassengers': vehicle.passengers
       }; 
     });
+    return cleanVehicleData;
     console.log(cleanVehicleData);
 
-  default: return 'error.message';
+  default: return 'bullshit';
   }
 };
       
