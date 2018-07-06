@@ -45,14 +45,14 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Landing 
-            films ={ this.state.openingFilm }
-          />
           <h1 className="App-title">SWapi-Box</h1>
           <ButtonContainer
             setCategory ={ this.setCategory  }
           />
         </header>
+        <Landing 
+          films ={ this.state.openingFilm }
+        />
         <p className="App-intro"></p>
         {/* <CardContainer />  */}
       </div>

@@ -63,7 +63,7 @@ const cleaner = ( data, category ) => {
         'Name': vehicle.name,
         'Model': vehicle.model,
         'Class': vehicle.vehicle_class,
-        'Number of Passengers': vehicle.passengers
+        'NumberOfPassengers': vehicle.passengers
       }; 
     });
     console.log(cleanVehicleData);
@@ -75,18 +75,4 @@ const cleaner = ( data, category ) => {
       
 export default cleaner;
 
-// export const cleanPlanetData = mockPlanetsData.results.map(planet => {
-//   return {
-//     [planet.name]: {
-//       'name': planet.name,
-//       'terrain': planet.terrain,
-//       'population': planet.population,
-//       'climate': planet.climate,
-//       'residents': planet.residents.map(resident => {
-//         return resident
-//         //make fetchCall here
-//       })
-//     }
-//   }
-// })
 
