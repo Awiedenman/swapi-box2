@@ -54,16 +54,20 @@ const cleaner = ( data, category ) => {
 
     return Promise.all(cleanPlanetData);
      
-    // case vehicles:
+  case 'vehicles':
 
-    // var cleanVehicleData = data.results.map( vehicle => {
-    //   return {
-    //       'Name': vehicle.name,
-    //       'Model': vehicle.model,
-    //       'Class': vehicle.class,
-    //       'Number of Passengers': vehicle.passengers
-    //   };
-    // });
+    var cleanVehicleData = data.results.map( vehicle => {
+      console.log(vehicle.name);
+
+      return {
+        'Name': vehicle.name,
+        'Model': vehicle.model,
+        'Class': vehicle.vehicle_class,
+        'Number of Passengers': vehicle.passengers
+      }; 
+    });
+    console.log(cleanVehicleData);
+
   default: return 'error.message';
   }
 };
@@ -85,3 +89,4 @@ export default cleaner;
 //     }
 //   }
 // })
+
