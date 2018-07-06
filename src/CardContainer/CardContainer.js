@@ -3,12 +3,19 @@ import Card from '../Card/Card';
 import PropTypes from 'prop-types';
 
 
-export const CardContainer = ({ peopleInfo }) => {
-console.log(peopleInfo)
+export const CardContainer = ({ cardInfo }) => {
+  const displayCards = cardInfo.map( card => (
+     
+    <Card 
+    <h1>card.name</h1>
+    />;
+      
+  
+  });
 
   return (
     <div>
-      {/* {peopleInfo} */}
+      {/* {displayCards} */}
     </div>
   );
 

@@ -47,7 +47,7 @@ const cleaner = ( data, category ) => {
         'Residents': planetResidentData 
       };
     });
-    // console.log(cleanPlanetData)
+    console.log(cleanPlanetData)
 
     return Promise.all(cleanPlanetData);
      
