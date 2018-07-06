@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { ButtonContainer } from '../ButtonContainer/ButtonContainer';
-import './App.css';
+import { CardContainer } from '../CardContainer/CardContainer';
 import { Landing } from '../Landing/Landing';
 import { starWarsData } from '../apiCalls/apiCalls';
+import './App.css';
 
 class App extends Component {
   constructor( props) {
@@ -20,7 +21,7 @@ class App extends Component {
   setCategory = async( name ) => {
     // console.log(name)
     await this.setState({ category: name});
-    console.log(this.state);
+    // console.log(this.state);
     const categoryData = await starWarsData(name);
     await this.setState({ [name] : [...categoryData], openingFilm : {}});
   }
@@ -37,6 +38,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      {/* <h2>{this.state.errorStatus}</h2> */}
         <header className="App-header">
           <h1 className="App-title">SWapi-Box</h1>
           <ButtonContainer
@@ -48,7 +50,11 @@ class App extends Component {
           films ={ this.state.openingFilm }
         />}
         <p className="App-intro"></p>
-        {/* <CardContainer />  */}
+        <CardContainer 
+          peopleInfo={ this.state.people }
+          planetInfo={ this.state.planets }
+          vehiclesInfo={ this.state.vehicle }
+        /> 
       </div>
     );
   }
