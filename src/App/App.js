@@ -12,7 +12,8 @@ class App extends Component {
       openingFilm: {},
       people: [],
       planets: [],
-      vehicles: []
+      vehicles: [],
+      errorStatus: ''
     };
   }
   
