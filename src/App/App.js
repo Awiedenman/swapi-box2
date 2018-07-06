@@ -24,9 +24,9 @@ class App extends Component {
   // };
 
   setCategory = async( name ) => {
-    console.log(name)
-    this.setState({ category: [name]});
-    console.log(this.state);
+    // console.log(name)
+    await this.setState({ category: [name]});
+    // console.log(this.state);
     const categoryData = await starWarsData(name);
     await this.setState({ [name] : [...categoryData]});
   }
@@ -36,7 +36,7 @@ class App extends Component {
     const response = await starWarsData(this.state.category);
     // console.log(response)
     await this.setState({openingFilm: { ...response[randomNum] }});
-    console.log(this.state.openingFilm);
+    // console.log(this.state.openingFilm);
     
     
   }

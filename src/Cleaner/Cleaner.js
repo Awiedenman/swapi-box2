@@ -1,5 +1,5 @@
 
-// import { filmFetch } from '../apiCalls/apiCalls';
+import { personHomeworld } from '../apiCalls/apiCalls';
 const cleaner = ( data, category ) => {
   // console.log(data)
   switch (category) {
@@ -18,21 +18,21 @@ const cleaner = ( data, category ) => {
   
   case 'people':
 
-    var cleanPeopleData = data.results.map((person) => {
+    var cleanPeopleData = data.results.map( async(person) => {
       return {
         'name': person.name,
         'data': {
           'name': person.name,
-          'homeworld': person.homeworld,
-          'species': person.species.map( specie => {
-          //make fetch here,
-          }),
-          'population_of_homeworld': person.homeworld
+          'homeworld': await personHomeworld(person.homeworld),
+          // 'species': person.species.map( specie => {
+          // //make fetch here,
+          // }),
+          'population_of_homeworld':0
         }
       };
-    
+      
     });
-    return cleanPeopleData;
+    return Promise.all(cleanPeopleData);
 
     case 'planets':
 
