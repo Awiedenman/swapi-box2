@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Button = ( {name, setCategory } ) => {
+export const Button = ( { name, setCategory } ) => {
   return (
     <button onClick={()=> setCategory( name ) }> {name} </button>
   );

@@ -1,11 +1,28 @@
 
-export const fetchData = ( type ) => {
-  // switch (type) {
-  // case 'film':
+// import { filmFetch } from '../apiCalls/apiCalls';
+var cleaner = ( data, category ) => {
+  // console.log(data)
+  switch (category) {
     
-  // }
+    case 'films':
 
+    var cleanFilms = data.results.map( film  => { 
+      // console.log(film)
+      return {
 
+        'title': film.title,
+        'opening_crawl': film.opening_crawl,
+        'release_date': film.release_date
+      };
+    
+    });
+    return cleanFilms;
+}
+};
+
+  export default cleaner;
+  
+  
 // const cleanPeopleData = mockPeopleData.results.map((person) => {
 //   return {
 //     [person.name]: {
@@ -33,14 +50,7 @@ export const fetchData = ( type ) => {
 //     }
 //   }
 // })
-};
 
 
-export const cleanFilmData = ( film ) => {
-  return {
-    'title': film.title,
-    'opening_crawl': film.opening_crawl,
-    'release_date': film.release_date
-  };
-};
+  
 

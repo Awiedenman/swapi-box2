@@ -1,14 +1,14 @@
-import { cleanFilmData } from '../Cleaner/Cleaner';
+import cleaner from '../Cleaner/Cleaner';
 
-export const filmFetch = async ( category) => {
-  const randomNum = Math.floor(Math.random() * 6) +1;
-  const url = `https://swapi.co/api/films/${randomNum}`;
+export const starWarsData = async ( category ) => {
+  // console.log(category)
+  const url = `https://swapi.co/api/${category}`;
   try {
     const response = await fetch(url);
-    console.log(response);
-    const filmData = await response.json();
-    console.log(filmData);
-    return cleanFilmData(filmData);
+    // console.log(response);
+    const data = await response.json();
+    // console.log(data);
+    return await cleaner( data, category);
   } catch ( error ) {
     throw new Error(`${error.message}`);
   }
