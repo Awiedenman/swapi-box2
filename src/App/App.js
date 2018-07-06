@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ButtonContainer } from '../ButtonContainer/ButtonContainer';
 import './App.css';
-// import { fetchData } from '../Cleaner/Cleaner';
+import { Landing } from '../Landing/Landing';
 import { starWarsData } from '../apiCalls/apiCalls';
 
 class App extends Component {
@@ -18,15 +18,15 @@ class App extends Component {
   
 
   // fetchStarWarsData = ( name ) => {
-    // fetchData(name)
-    // console.log( 'click', name );
-    // fetch(name)
+  // fetchData(name)
+  // console.log( 'click', name );
+  // fetch(name)
   // };
 
   setCategory = async( name ) => {
     // console.log(name)
     await this.setState({ category: name});
-    // console.log(this.state);
+    console.log(this.state);
     const categoryData = await starWarsData(name);
     await this.setState({ [name] : [...categoryData]});
   }
@@ -44,6 +44,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+          <Landing 
+            films ={ this.state.openingFilm }
+          />
           <h1 className="App-title">SWapi-Box</h1>
           <ButtonContainer
             setCategory ={ this.setCategory  }
