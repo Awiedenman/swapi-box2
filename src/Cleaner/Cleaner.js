@@ -1,5 +1,5 @@
 
-import { personHomeworld, personHomeworldPopulation, personHomeworldSpecies } from '../apiCalls/apiCalls';
+import { personHomeworld, personHomeworldPopulation, personHomeworldSpecies, planetResidents } from '../apiCalls/apiCalls';
 const cleaner = ( data, category ) => {
   // console.log(data)
   switch (category) {
@@ -28,19 +28,39 @@ const cleaner = ( data, category ) => {
           'population_of_homeworld':await personHomeworldPopulation(person.homeworld)
         }
       };
-      
     });
+    // console.log(cleanPeopleData)
     return Promise.all(cleanPeopleData);
 
   case 'planets':
 
-    
+    var cleanPlanetData = data.results.map( async( planet ) => {
+      const residents = planet.residents.map( async( resident ) => {
+        // console.log(resident)
+        return await planetResidents(resident);
+      });
 
+      let planetResidentData = Promise.all(residents);
+
+      return { 
+        'Name': planet.name,
+        'data':{
+          'Terrain': planet.terrain,
+          'Population': planet.population,
+          'Climate': planet.climate,
+          'Residents': planetResidentData
+        }
+      };
+    });
+
+    return Promise.all(cleanPlanetData);
+     
+  default: return 'error.message';
   }
 };
-
+      
+      
 export default cleaner;
-
 
 // export const cleanPlanetData = mockPlanetsData.results.map(planet => {
 //   return {
