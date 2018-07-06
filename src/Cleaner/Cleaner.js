@@ -22,12 +22,9 @@ const cleaner = ( data, category ) => {
     var cleanPeopleData = data.results.map( async(person) => {
       return {
         'name': person.name,
-        'data': {
-          'name': person.name,
-          'homeworld': await personHomeworld(person.homeworld),
-          'species': await personHomeworldSpecies(person.species),
-          'population_of_homeworld':await personHomeworldPopulation(person.homeworld)
-        }
+        'homeworld': await personHomeworld(person.homeworld),
+        'species': await personHomeworldSpecies(person.species),
+        'population_of_homeworld':await personHomeworldPopulation(person.homeworld)
       };
     });
     // console.log(cleanPeopleData)
@@ -50,38 +47,30 @@ const cleaner = ( data, category ) => {
         'Residents': planetResidentData 
       };
     });
-    // console.log(cleanPlanetData)
+    console.log(cleanPlanetData)
 
     return Promise.all(cleanPlanetData);
      
-    // case vehicles:
+  case 'vehicles':
 
-    // var cleanVehicleData = data.results.map( vehicle => {
-    //   return {
-    //       'Name': vehicle.name,
-    //       'Model': vehicle.model,
-    //       'Class': vehicle.class,
-    //       'Number of Passengers': vehicle.passengers
-    //   };
-    // });
-  default: return 'error.message';
+    var cleanVehicleData = data.results.map( vehicle => {
+      console.log(vehicle.name);
+
+      return {
+        'Name': vehicle.name,
+        'Model': vehicle.model,
+        'Class': vehicle.vehicle_class,
+        'NumberOfPassengers': vehicle.passengers
+      }; 
+    });
+    return cleanVehicleData;
+    console.log(cleanVehicleData);
+
+  default: return 'bullshit';
   }
 };
       
       
 export default cleaner;
 
-// export const cleanPlanetData = mockPlanetsData.results.map(planet => {
-//   return {
-//     [planet.name]: {
-//       'name': planet.name,
-//       'terrain': planet.terrain,
-//       'population': planet.population,
-//       'climate': planet.climate,
-//       'residents': planet.residents.map(resident => {
-//         return resident
-//         //make fetchCall here
-//       })
-//     }
-//   }
-// })
+

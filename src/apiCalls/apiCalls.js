@@ -5,41 +5,67 @@ export const starWarsData = async ( category ) => {
   const url = `https://swapi.co/api/${category}`;
   try {
     const response = await fetch(url);
+    if (response.status === 200) {
     // console.log(response);
-    const data = await response.json();
-    // console.log(data);
-    return await cleaner( data, category);
+      const data = await response.json();
+      // console.log(data);
+      return await cleaner( data, category);
+    } 
   } catch ( error ) {
     throw new Error(`${error.message}`);
   }
 };
 
 export const personHomeworld = async( url ) => {
-  const response = await fetch(url);
-  const data = await response.json();
-  // console.log(data)
-  return data.name;
+  try {
+    const response = await fetch(url);
+    if (response.status === 200) {
+      const data = await response.json();
+      // console.log(data)
+      return data.name;
+    } 
+  } catch (error) {
+    throw new Error(`${error.message}`);
+  }
 };
 
 export const personHomeworldPopulation = async( url ) => {
-  const response = await fetch( url );
-  const data = await response.json();
-  return data.population;
-};
+  try {
+    const response = await fetch( url );
+    if (response.status === 200 ){
+      const data = await response.json();
+      return data.population;
+    }
+  } catch ( error ) {
+    throw new Error(`${error.message}`);
+  }
+}; 
 
 export const personHomeworldSpecies = async(url) =>{
-  const response = await fetch( url );
-  // console.log(response)
-  const data = await response.json();
-  // console.log(data.name);
-  return data.name;
+  try{
+    const response = await fetch( url );
+    if( response.status === 200 ){
+      // console.log(response)
+      const data = await response.json();
+      // console.log(data.name);
+      return data.name;
+    }
+  } catch(error){
+    throw new Error(`$(error.message)`);
+  }
 };
 
 export const planetResidents = async(url) => {
-  const response = await fetch(url);
-  const data = await response.json();
-  console.log(data)
-  return data.name;
+  try {
+    const response = await fetch(url);
+    if (response.status === 200){
+      const data = await response.json();
+      // console.log(data)
+      return data.name;
+    }
+  } catch (error){
+    throw new Error(`$(error.message`);
+  }
 };
 
 

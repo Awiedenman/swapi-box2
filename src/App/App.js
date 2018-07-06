@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { ButtonContainer } from '../ButtonContainer/ButtonContainer';
-import './App.css';
-// import { fetchData } from '../Cleaner/Cleaner';
+import { CardContainer } from '../CardContainer/CardContainer';
+import { Landing } from '../Landing/Landing';
 import { starWarsData } from '../apiCalls/apiCalls';
+import './App.css';
 
 class App extends Component {
   constructor( props) {
@@ -12,23 +13,17 @@ class App extends Component {
       openingFilm: {},
       people: [],
       planets: [],
-      vehicles: []
+      vehicles: [],
+      errorStatus: ''
     };
   }
-  
-
-  // fetchStarWarsData = ( name ) => {
-    // fetchData(name)
-    // console.log( 'click', name );
-    // fetch(name)
-  // };
 
   setCategory = async( name ) => {
-    console.log(name)
+    // console.log(name)
     await this.setState({ category: name});
     // console.log(this.state);
     const categoryData = await starWarsData(name);
-    await this.setState({ [name] : [...categoryData]});
+    await this.setState({ [name] : [...categoryData], openingFilm : {}});
   }
 
   async componentDidMount() {
@@ -43,14 +38,23 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      {/* <h2>{this.state.errorStatus}</h2> */}
         <header className="App-header">
           <h1 className="App-title">SWapi-Box</h1>
           <ButtonContainer
             setCategory ={ this.setCategory  }
           />
         </header>
+        {this.state.openingFilm && 
+        <Landing 
+          films ={ this.state.openingFilm }
+        />}
         <p className="App-intro"></p>
-        {/* <CardContainer />  */}
+        <CardContainer 
+          cardInfo={ this.state[this.state.category] }
+          // planetInfo={ this.state.planets }
+          // vehiclesInfo={ this.state.vehicle }
+        /> 
       </div>
     );
   }
