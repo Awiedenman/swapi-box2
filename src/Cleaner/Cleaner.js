@@ -1,5 +1,5 @@
 
-import { personHomeworld, personHomeworldPopulation } from '../apiCalls/apiCalls';
+import { personHomeworld, personHomeworldPopulation, personHomeworldSpecies } from '../apiCalls/apiCalls';
 const cleaner = ( data, category ) => {
   // console.log(data)
   switch (category) {
@@ -24,10 +24,7 @@ const cleaner = ( data, category ) => {
         'data': {
           'name': person.name,
           'homeworld': await personHomeworld(person.homeworld),
-          'species': person.species.map(async(specie) => {
-            
-             await fetch(specie.species);          
-          }),
+          'species': await personHomeworldSpecies(person.species),
           'population_of_homeworld':await personHomeworldPopulation(person.homeworld)
         }
       };

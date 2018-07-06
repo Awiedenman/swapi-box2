@@ -21,13 +21,19 @@ export const personHomeworld = async( url ) => {
   return data.name;
 };
 
-
 export const personHomeworldPopulation = async( url ) => {
-  const response = await fetch( url);
+  const response = await fetch( url );
   const data = await response.json();
   return data.population;
-}
+};
 
+export const personHomeworldSpecies = async(url) =>{
+  const response = await fetch( url );
+  console.log(response)
+  const data = await response.json();
+  console.log(data.name);
+  return data.name;
+};
 
 
 // export const filmFetch = async () => {
