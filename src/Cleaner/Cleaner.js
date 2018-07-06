@@ -1,5 +1,6 @@
 
 import { personHomeworld, personHomeworldPopulation, personHomeworldSpecies, planetResidents } from '../apiCalls/apiCalls';
+import { promises } from 'fs';
 const cleaner = ( data, category ) => {
   // console.log(data)
   switch (category) {
@@ -39,22 +40,30 @@ const cleaner = ( data, category ) => {
         // console.log(resident)
         return await planetResidents(resident);
       });
-
-      let planetResidentData = Promise.all(residents);
-
+      let planetResidentData = await Promise.all(residents);
+    
       return { 
-        'Name': planet.name,
-        'data':{
-          'Terrain': planet.terrain,
-          'Population': planet.population,
-          'Climate': planet.climate,
-          'Residents': planetResidentData
-        }
+        'Name': planet.name, 
+        'Terrain': planet.terrain,
+        'Population': planet.population,
+        'Climate': planet.climate,
+        'Residents': planetResidentData 
       };
     });
+    // console.log(cleanPlanetData)
 
     return Promise.all(cleanPlanetData);
      
+    // case vehicles:
+
+    // var cleanVehicleData = data.results.map( vehicle => {
+    //   return {
+    //       'Name': vehicle.name,
+    //       'Model': vehicle.model,
+    //       'Class': vehicle.class,
+    //       'Number of Passengers': vehicle.passengers
+    //   };
+    // });
   default: return 'error.message';
   }
 };

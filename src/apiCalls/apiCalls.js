@@ -29,16 +29,16 @@ export const personHomeworldPopulation = async( url ) => {
 
 export const personHomeworldSpecies = async(url) =>{
   const response = await fetch( url );
-  console.log(response)
+  // console.log(response)
   const data = await response.json();
-  console.log(data.name);
+  // console.log(data.name);
   return data.name;
 };
 
 export const planetResidents = async(url) => {
   const response = await fetch(url);
-  console.log(response)
-  const data = response.json();
+  const data = await response.json();
+  console.log(data)
   return data.name;
 };
 
