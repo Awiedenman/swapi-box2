@@ -15,8 +15,7 @@ class App extends Component {
       planets: [],
       vehicles: [],
       favorites: [],
-      errorStatus: '',
-      starred: false
+      errorStatus: ''
     };
   }
 
@@ -37,7 +36,7 @@ class App extends Component {
       return favorite.cardKey === cardKey;
     });
     if (hasKey.length === 0){
-      this.setState({ favorites : [...this.state.favorites, { ...card, cardKey: cardKey }], starred : !this.state.starred });
+      this.setState({ favorites : [...this.state.favorites, { ...card, cardKey: cardKey }]});
     } else {
       const newFavorites = this.state.favorites.filter( favorite => {
         return favorite.cardKey !== cardKey;
@@ -74,7 +73,7 @@ class App extends Component {
           cardInfo={ this.state[this.state.category] }
           toggleFavorite={ this.toggleFavorite }
           category={ this.state.category }
-          starred={ this.state.starred }
+          favorites={ this.state.favorites }
         /> 
       </div>
     );

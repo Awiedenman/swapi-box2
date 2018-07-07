@@ -42,7 +42,7 @@ const cleaner = ( data, category ) => {
       let planetResidentData = await Promise.all(residents);
     
       return { 
-        'Name': planet.name, 
+        'name': planet.name, 
         'data' : {
           'Terrain': planet.terrain,
           'Population': planet.population,
@@ -61,7 +61,7 @@ const cleaner = ( data, category ) => {
       // console.log(vehicle.name);
 
       return {
-        'Name': vehicle.name,
+        'name': vehicle.name,
         'data': {
           'Model': vehicle.model,
           'Class': vehicle.vehicle_class,
