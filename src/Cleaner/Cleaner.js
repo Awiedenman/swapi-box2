@@ -47,14 +47,14 @@ const cleaner = ( data, category ) => {
         'Residents': planetResidentData 
       };
     });
-    console.log(cleanPlanetData)
+    // console.log(cleanPlanetData)
 
     return Promise.all(cleanPlanetData);
      
   case 'vehicles':
 
     var cleanVehicleData = data.results.map( vehicle => {
-      console.log(vehicle.name);
+      // console.log(vehicle.name);
 
       return {
         'Name': vehicle.name,
@@ -64,7 +64,7 @@ const cleaner = ( data, category ) => {
       }; 
     });
     return cleanVehicleData;
-    console.log(cleanVehicleData);
+    // console.log(cleanVehicleData);
 
   default: return 'bullshit';
   }
