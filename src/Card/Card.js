@@ -1,5 +1,6 @@
 import React from 'react';
 import './Card.css';
+import PropTypes from 'prop-types';
 
 export const Card = ({ card, addFavorite, cardKey }) => {
   console.log('card key', cardKey)
@@ -17,5 +18,10 @@ export const Card = ({ card, addFavorite, cardKey }) => {
     </div>
   );
 };
-  
+ 
+Card.propTypes = {
+  card: PropTypes.object,
+  addFavorite: PropTypes.func,
+  cardKey: PropTypes.string
+};
 
