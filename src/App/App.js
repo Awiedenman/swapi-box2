@@ -14,6 +14,7 @@ class App extends Component {
       people: [],
       planets: [],
       vehicles: [],
+      favorites: [],
       errorStatus: ''
     };
   }

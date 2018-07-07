@@ -4,15 +4,16 @@ import PropTypes from 'prop-types';
 import './CardContainer.css';
 
 
-export const CardContainer = ({ cardInfo }) => {
+export const CardContainer = ({ cardInfo, addFavorite }) => {
   console.log('cardInfo', cardInfo);
   
   let displayCards = [];
   if ( cardInfo ){
     displayCards = cardInfo.map(( card, index )=> {
       return ( <Card
-        card={card}
-        key={index}
+        card={ card } 
+        key={ index }
+        addFavorite={ addFavorite }
       /> 
       );     
     });

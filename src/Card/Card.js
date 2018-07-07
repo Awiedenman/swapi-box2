@@ -1,7 +1,7 @@
 import React from 'react';
 import './Card.css';
 
-export const Card = ({ card }) => {
+export const Card = ({ card, addFavorite }) => {
   console.log('card', card)
   const createCards = Object.keys(card).map(( cardItem, index ) => {
     return (
@@ -12,6 +12,7 @@ export const Card = ({ card }) => {
     
   return (
     <div className='card'>
+      <div className='star' onClick={ addFavorite }> ★ </div>
       {createCards}
     </div>
   );
