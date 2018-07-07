@@ -2,16 +2,16 @@ import React from 'react';
 
 export const Card = ({ card }) => {
   console.log('card', card)
-  // const createCards = card.map(( cardItem, index ) => {
-  //   return (
-  //     <p key ={index}>{card[cardItem]}</p>
-  //   );
-  // });
+  const createCards = Object.keys(card).map(( cardItem, index ) => {
+    return (
+      <p key ={index}>{cardItem + ':' + card[cardItem]}</p>
+    );
+  });
       
     
   return (
     <div>
-      {/* {createCards} */}
+      {createCards}
     </div>
   );
 };
