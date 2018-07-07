@@ -1,6 +1,6 @@
 
 import { personHomeworld, personHomeworldPopulation, personHomeworldSpecies, planetResidents } from '../apiCalls/apiCalls';
-import { promises } from 'fs';
+
 const cleaner = ( data, category ) => {
   // console.log(data)
   switch (category) {
@@ -35,9 +35,8 @@ const cleaner = ( data, category ) => {
   case 'planets':
 
     var cleanPlanetData = data.results.map( async( planet ) => {
-      const residents = planet.residents.map( async( resident ) => {
-        // console.log(resident)
-        return await planetResidents(resident);
+      const residents = planet.residents.map( async( residentUrl ) => {
+        return await planetResidents(residentUrl);
       });
       let planetResidentData = await Promise.all(residents);
     
@@ -51,15 +50,13 @@ const cleaner = ( data, category ) => {
         }
       };
     });
-    // console.log(cleanPlanetData)
 
     return Promise.all(cleanPlanetData);
      
   case 'vehicles':
 
     var cleanVehicleData = data.results.map( vehicle => {
-      // console.log(vehicle.name);
-
+ 
       return {
         'name': vehicle.name,
         'data': {

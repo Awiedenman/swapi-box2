@@ -29,17 +29,16 @@ class App extends Component {
     }
   }
   
-  
-  toggleFavorite = (card, cardKey) => {
-    console.log('card', card, 'cardKey', cardKey);
+  toggleFavorite = (card) => {
+    // console.log('card', card, 'cardKey', cardKey);
     const hasKey = this.state.favorites.filter( favorite => {
-      return favorite.cardKey === cardKey;
+      return favorite.name === card.name;
     });
     if (hasKey.length === 0){
-      this.setState({ favorites : [...this.state.favorites, { ...card, cardKey: cardKey }]});
+      this.setState({ favorites : [...this.state.favorites, { ...card }]});
     } else {
       const newFavorites = this.state.favorites.filter( favorite => {
-        return favorite.cardKey !== cardKey;
+        return favorite.name !== card.name;
       });
       this.setState({ favorites : newFavorites});
     }
@@ -48,9 +47,7 @@ class App extends Component {
   async componentDidMount() {
     const randomNum = Math.floor(Math.random() * 6) + 1;
     const response = await starWarsData('films');
-    // console.log(response)
     await this.setState({openingFilmScroll: { ...response[randomNum] }});
-    // console.log(this.state.openingFilmScroll);
   }
   
 

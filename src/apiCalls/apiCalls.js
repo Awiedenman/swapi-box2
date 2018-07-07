@@ -10,9 +10,9 @@ export const starWarsData = async ( category ) => {
       const data = await response.json();
       // console.log(data);
       return await cleaner( data, category);
-    } 
+    } else throw new Error( response.status );
   } catch ( error ) {
-    throw new Error(`${error.message}`);
+    throw error;
   }
 };
 

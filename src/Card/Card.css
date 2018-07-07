@@ -14,3 +14,7 @@
   text-align: left;
 
 }
+
+.clicked {
+  border: 10px yellow solid;
+}
