@@ -1,28 +1,32 @@
 import React from 'react';
-import Card from '../Card/Card';
+import { Card } from '../Card/Card';
 import PropTypes from 'prop-types';
 
 
 export const CardContainer = ({ cardInfo }) => {
-  const displayCards = cardInfo.map( card => (
-     
-    <Card 
-    <h1>card.name</h1>
-    />;
-      
+  console.log('cardInfo', cardInfo);
   
-  });
+  let displayCards = [];
+  if ( cardInfo ){
+    displayCards = cardInfo.map(( card, index )=> {
+      return ( <Card
+        card={card}
+        key={index}
+      /> 
+      );     
+    });
+
+  }
 
   return (
     <div>
-      {/* {displayCards} */}
+      { displayCards } 
     </div>
   );
 
 };
 
+
 CardContainer.propTypes = {
-  peopleInfo: PropTypes.array,
-  planetInfo: PropTypes.array,
-  vehicleInfo: PropTypes.array
+  cardInfo: PropTypes.array
 };
