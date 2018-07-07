@@ -27,11 +27,17 @@ class App extends Component {
     await this.setState({ [name] : [...categoryData], openingFilmScroll : {}});
   }
 
-  addFavorite = ( key ) => {
-    console.log( 'app key', key )
-    console.log('click');
-    
-  }
+  addFavorite = ( card, cardKey ) => {
+    // console.log('card', card, 'cardKey', cardKey);
+    const favoriteMatch = this.state.favorites.find( favorite => {
+      return favorite.cardKey === cardKey;
+    });
+    this.setState({favorites: [...this.state.favorites, {...card, cardKey: cardKey }]});
+  };
+
+
+
+  
 
   async componentDidMount() {
     const randomNum = Math.floor(Math.random() * 6) + 1;
@@ -45,7 +51,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      {/* <h2>{this.state.errorStatus}</h2> */}
+        {/* <h2>{this.state.errorStatus}</h2> */}
         <header className="App-header">
           <h1 className="App-title">SWapi-Box</h1>
           <ButtonContainer

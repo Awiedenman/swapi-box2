@@ -3,7 +3,7 @@ import './Card.css';
 import PropTypes from 'prop-types';
 
 export const Card = ({ card, addFavorite, cardKey }) => {
-  console.log('card key', cardKey)
+  // console.log('card ', card)
   const createCards = Object.keys(card).map(( cardItem, index ) => {
     return (
       <p className='cardItem' key ={index}>{cardItem + ' :  ' + card[cardItem]}</p>
@@ -13,7 +13,7 @@ export const Card = ({ card, addFavorite, cardKey }) => {
     
   return (
     <div className='card'>
-      <div className='star' onClick={ () => addFavorite( cardKey ) }> ★ </div>
+      <div className='star' onClick={ () => addFavorite( card, cardKey ) }> ★ </div>
       {createCards}
     </div>
   );

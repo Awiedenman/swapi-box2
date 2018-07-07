@@ -5,13 +5,13 @@ import './CardContainer.css';
 
 
 export const CardContainer = ({ cardInfo, addFavorite, category }) => {
-  console.log('cardInfo', cardInfo);
+  // console.log('cardInfo', cardInfo);
   
   let displayCards = [];
   if ( cardInfo ){
     displayCards = cardInfo.map(( card, index )=> {
       return ( <Card
-        card={ card } 
+        card={ card }
         key={ index }
         cardKey={ category + index }
         addFavorite={ addFavorite }
