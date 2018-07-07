@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './CardContainer.css';
 
 
-export const CardContainer = ({ cardInfo, toggleFavorite, category }) => {
+export const CardContainer = ({ cardInfo, toggleFavorite, category, starred }) => {
   // console.log('cardInfo', cardInfo);
   
   let displayCards = [];
@@ -15,6 +15,7 @@ export const CardContainer = ({ cardInfo, toggleFavorite, category }) => {
         key={ index }
         cardKey={ category + index }
         toggleFavorite={ toggleFavorite }
+        starred={ starred }
       /> 
       );     
     });

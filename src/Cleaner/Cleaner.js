@@ -22,9 +22,11 @@ const cleaner = ( data, category ) => {
     var cleanPeopleData = data.results.map( async(person) => {
       return {
         'name': person.name,
-        'homeworld': await personHomeworld(person.homeworld),
-        'species': await personHomeworldSpecies(person.species),
-        'population_of_homeworld':await personHomeworldPopulation(person.homeworld)
+        'data': {
+          'homeworld': await personHomeworld(person.homeworld),
+          'species': await personHomeworldSpecies(person.species),
+          'population_of_homeworld':await personHomeworldPopulation(person.homeworld)
+        }
       };
     });
     // console.log(cleanPeopleData)
@@ -41,10 +43,12 @@ const cleaner = ( data, category ) => {
     
       return { 
         'Name': planet.name, 
-        'Terrain': planet.terrain,
-        'Population': planet.population,
-        'Climate': planet.climate,
-        'Residents': planetResidentData 
+        'data' : {
+          'Terrain': planet.terrain,
+          'Population': planet.population,
+          'Climate': planet.climate,
+          'Residents': planetResidentData 
+        }
       };
     });
     // console.log(cleanPlanetData)
@@ -58,9 +62,11 @@ const cleaner = ( data, category ) => {
 
       return {
         'Name': vehicle.name,
-        'Model': vehicle.model,
-        'Class': vehicle.vehicle_class,
-        'NumberOfPassengers': vehicle.passengers
+        'data': {
+          'Model': vehicle.model,
+          'Class': vehicle.vehicle_class,
+          'NumberOfPassengers': vehicle.passengers
+        }
       }; 
     });
     return cleanVehicleData;
