@@ -26,18 +26,22 @@ class App extends Component {
     const categoryData = await starWarsData(name);
     await this.setState({ [name] : [...categoryData], openingFilmScroll : {}});
   }
-
-  addFavorite = ( card, cardKey ) => {
-    // console.log('card', card, 'cardKey', cardKey);
-    const favoriteMatch = this.state.favorites.find( favorite => {
+  
+  
+  toggleFavorite = ( card, cardKey ) => {
+    console.log('card', card, 'cardKey', cardKey);
+    const hasKey = this.state.favorites.filter( favorite => {
       return favorite.cardKey === cardKey;
     });
-    this.setState({favorites: [...this.state.favorites, {...card, cardKey: cardKey }]});
-  };
-
-
-
-  
+    if (hasKey.length === 0){
+      this.setState({ favorites : [...this.state.favorites, {...card, cardKey: cardKey}] });
+    } else {
+      const newFavorites = this.state.favorites.filter( favorite => {
+        return favorite.cardKey !== cardKey;
+      });
+      this.setState({ favorites : newFavorites});
+    }
+  } 
 
   async componentDidMount() {
     const randomNum = Math.floor(Math.random() * 6) + 1;
@@ -65,7 +69,7 @@ class App extends Component {
         <p className="App-intro"></p>
         <CardContainer 
           cardInfo={ this.state[this.state.category] }
-          addFavorite={ this.addFavorite }
+          toggleFavorite={ this.toggleFavorite }
           category={ this.state.category }
         /> 
       </div>

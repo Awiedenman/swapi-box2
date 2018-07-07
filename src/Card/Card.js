@@ -2,7 +2,7 @@ import React from 'react';
 import './Card.css';
 import PropTypes from 'prop-types';
 
-export const Card = ({ card, addFavorite, cardKey }) => {
+export const Card = ({ card, toggleFavorite, cardKey }) => {
   // console.log('card ', card)
   const createCards = Object.keys(card).map(( cardItem, index ) => {
     return (
@@ -10,10 +10,9 @@ export const Card = ({ card, addFavorite, cardKey }) => {
     );
   });
       
-    
   return (
     <div className='card'>
-      <div className='star' onClick={ () => addFavorite( card, cardKey ) }> ★ </div>
+      <div className='star' onClick={ () => toggleFavorite( card, cardKey ) }> ★ </div>
       {createCards}
     </div>
   );
@@ -21,7 +20,7 @@ export const Card = ({ card, addFavorite, cardKey }) => {
  
 Card.propTypes = {
   card: PropTypes.object,
-  addFavorite: PropTypes.func,
+  toggleFavorite: PropTypes.func,
   cardKey: PropTypes.string
 };
 
