@@ -12,8 +12,9 @@ export const starWarsData = async ( category ) => {
 
       // console.log(data);
       return await cleaner( data, category);
-    } else 
+    } else {
       throw new Error( response.status );
+    }
   } catch ( error ) {
     throw error;
   }
@@ -26,9 +27,11 @@ export const personHomeworld = async( url ) => {
       const data = await response.json();
       // console.log(data)
       return data.name;
-    } 
-  } catch (error) {
-    throw new Error(`${error.message}`);
+    } else {
+      throw new Error( response.status );
+    }
+  } catch ( error ) {
+    throw error;
   }
 };
 
@@ -38,23 +41,27 @@ export const personHomeworldPopulation = async( url ) => {
     if (response.status === 200 ){
       const data = await response.json();
       return data.population;
+    } else {
+      throw new Error( response.status );
     }
   } catch ( error ) {
-    throw new Error(`${error.message}`);
+    throw error;
   }
 }; 
 
 export const personHomeworldSpecies = async(url) =>{
-  try{
+  try {
     const response = await fetch( url );
-    if( response.status === 200 ){
+    if ( response.status === 200 ){
       // console.log(response)
       const data = await response.json();
       // console.log(data.name);
       return data.name;
+    } else {
+      throw new Error( response.status );
     }
-  } catch(error){
-    throw new Error(`$(error.message)`);
+  } catch ( error ) {
+    throw error;
   }
 };
 
@@ -65,9 +72,11 @@ export const planetResidents = async(url) => {
       const data = await response.json();
       // console.log(data)
       return data.name;
+    } else {
+      throw new Error( response.status );
     }
-  } catch (error){
-    throw new Error(`$(error.message`);
+  } catch ( error ) {
+    throw error;
   }
 };
 

@@ -56,7 +56,7 @@ const cleaner = ( data, category ) => {
   case 'vehicles':
 
     var cleanVehicleData = data.results.map( vehicle => {
- 
+ console.log(data)
       return {
         'name': vehicle.name,
         'data': {
@@ -69,7 +69,7 @@ const cleaner = ( data, category ) => {
     return cleanVehicleData;
     // console.log(cleanVehicleData);
 
-  default: return 'bullshit';
+  default: return 'Sorry, we could not return you your requested data at this time ';
   }
 };
       

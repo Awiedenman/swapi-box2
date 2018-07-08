@@ -25,6 +25,7 @@ class App extends Component {
     // console.log(this.state);
     if (this.state.category !== 'favorites'){
       const categoryData = await starWarsData(name);
+      // console.log(categoryData)
       await this.setState({ [name] : [...categoryData], openingFilmScroll : {}});
     }
   }
