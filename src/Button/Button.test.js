@@ -5,16 +5,19 @@ import { shallow } from 'enzyme';
 describe('Button', () => {
 
   let wrapper;
+  let mockSetCategory;
   let mockCategory;
 
   beforeEach(() => {
     
+    mockSetCategory = jest.fn();
     mockCategory = 'vehicles';
+
 
     wrapper = shallow (
       <Button 
         name='vehicles'
-        setCategory={ jest.fn() }
+        setCategory={ mockSetCategory }
       />);
   });
   
@@ -25,8 +28,8 @@ describe('Button', () => {
 
   it('should call setCategory with the params of the button name when button is clicked', () => {
 
-    wrapper.instance().simulate('click')
+    wrapper.simulate('click')
 
-    expect(wrapper.setCategory).toHaveBeenCalledWith();
+    expect(mockSetCategory).toHaveBeenCalledWith(mockCategory);
   });
 });
