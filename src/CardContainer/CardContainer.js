@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 import './CardContainer.css';
 
 
-export const CardContainer = ({ cardInfo, toggleFavorite, category }) => {
+export const CardContainer = ({ cardInfo, toggleFavorite, category, favorites }) => {
   // console.log('cardInfo', cardInfo);
   
-  let displayCards = [];
+  let displayCards;
+  
   if ( cardInfo ){
     displayCards = cardInfo.map(( card, index )=> {
       return ( <Card
@@ -15,6 +16,7 @@ export const CardContainer = ({ cardInfo, toggleFavorite, category }) => {
         key={ index }
         cardKey={ category + index }
         toggleFavorite={ toggleFavorite }
+        favorites={ favorites }
       /> 
       );     
     });
@@ -33,5 +35,6 @@ export const CardContainer = ({ cardInfo, toggleFavorite, category }) => {
 CardContainer.propTypes = {
   cardInfo: PropTypes.array,
   toggleFavorite: PropTypes.func,
-  category: PropTypes.string
+  category: PropTypes.string,
+  favorites: PropTypes.array
 };

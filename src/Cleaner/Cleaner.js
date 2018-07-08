@@ -1,6 +1,6 @@
 
 import { personHomeworld, personHomeworldPopulation, personHomeworldSpecies, planetResidents } from '../apiCalls/apiCalls';
-import { promises } from 'fs';
+
 const cleaner = ( data, category ) => {
   // console.log(data)
   switch (category) {
@@ -22,9 +22,11 @@ const cleaner = ( data, category ) => {
     var cleanPeopleData = data.results.map( async(person) => {
       return {
         'name': person.name,
-        'homeworld': await personHomeworld(person.homeworld),
-        'species': await personHomeworldSpecies(person.species),
-        'population_of_homeworld':await personHomeworldPopulation(person.homeworld)
+        'data': {
+          'homeworld': await personHomeworld(person.homeworld),
+          'species': await personHomeworldSpecies(person.species),
+          'population_of_homeworld':await personHomeworldPopulation(person.homeworld)
+        }
       };
     });
     // console.log(cleanPeopleData)
@@ -33,40 +35,41 @@ const cleaner = ( data, category ) => {
   case 'planets':
 
     var cleanPlanetData = data.results.map( async( planet ) => {
-      const residents = planet.residents.map( async( resident ) => {
-        // console.log(resident)
-        return await planetResidents(resident);
+      const residents = planet.residents.map( async( residentUrl ) => {
+        return await planetResidents(residentUrl);
       });
       let planetResidentData = await Promise.all(residents);
     
       return { 
-        'Name': planet.name, 
-        'Terrain': planet.terrain,
-        'Population': planet.population,
-        'Climate': planet.climate,
-        'Residents': planetResidentData 
+        'name': planet.name, 
+        'data' : {
+          'Terrain': planet.terrain,
+          'Population': planet.population,
+          'Climate': planet.climate,
+          'Residents': planetResidentData 
+        }
       };
     });
-    // console.log(cleanPlanetData)
 
     return Promise.all(cleanPlanetData);
      
   case 'vehicles':
 
     var cleanVehicleData = data.results.map( vehicle => {
-      // console.log(vehicle.name);
-
+ console.log(data)
       return {
-        'Name': vehicle.name,
-        'Model': vehicle.model,
-        'Class': vehicle.vehicle_class,
-        'NumberOfPassengers': vehicle.passengers
+        'name': vehicle.name,
+        'data': {
+          'Model': vehicle.model,
+          'Class': vehicle.vehicle_class,
+          'NumberOfPassengers': vehicle.passengers
+        }
       }; 
     });
     return cleanVehicleData;
     // console.log(cleanVehicleData);
 
-  default: return 'bullshit';
+  default: return 'Sorry, we could not return you your requested data at this time ';
   }
 };
       

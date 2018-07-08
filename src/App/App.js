@@ -23,21 +23,23 @@ class App extends Component {
     // console.log(name)
     await this.setState({ category: name});
     // console.log(this.state);
-    const categoryData = await starWarsData(name);
-    await this.setState({ [name] : [...categoryData], openingFilmScroll : {}});
+    if (this.state.category !== 'favorites'){
+      const categoryData = await starWarsData(name);
+      // console.log(categoryData)
+      await this.setState({ [name] : [...categoryData], openingFilmScroll : {}});
+    }
   }
   
-  
-  toggleFavorite = ( card, cardKey ) => {
-    console.log('card', card, 'cardKey', cardKey);
+  toggleFavorite = (card) => {
+    // console.log('card', card, 'cardKey', cardKey);
     const hasKey = this.state.favorites.filter( favorite => {
-      return favorite.cardKey === cardKey;
+      return favorite.name === card.name;
     });
     if (hasKey.length === 0){
-      this.setState({ favorites : [...this.state.favorites, {...card, cardKey: cardKey}] });
+      this.setState({ favorites : [...this.state.favorites, { ...card }]});
     } else {
       const newFavorites = this.state.favorites.filter( favorite => {
-        return favorite.cardKey !== cardKey;
+        return favorite.name !== card.name;
       });
       this.setState({ favorites : newFavorites});
     }
@@ -46,9 +48,7 @@ class App extends Component {
   async componentDidMount() {
     const randomNum = Math.floor(Math.random() * 6) + 1;
     const response = await starWarsData('films');
-    // console.log(response)
     await this.setState({openingFilmScroll: { ...response[randomNum] }});
-    // console.log(this.state.openingFilmScroll);
   }
   
 
@@ -71,6 +71,7 @@ class App extends Component {
           cardInfo={ this.state[this.state.category] }
           toggleFavorite={ this.toggleFavorite }
           category={ this.state.category }
+          favorites={ this.state.favorites }
         /> 
       </div>
     );

@@ -17,6 +17,10 @@ export const ButtonContainer = ( { setCategory  } ) => {
         name='vehicles'
         setCategory ={ setCategory  }
       />
+      <Button 
+        name='favorites'
+        setCategory ={ setCategory  }
+      />
     </div>
   );
 };
