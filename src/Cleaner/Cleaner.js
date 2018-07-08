@@ -15,6 +15,7 @@ const cleaner = ( data, category ) => {
         'release_date': film.release_date
       };
     });
+    console.log(cleanFilmsData)
     return cleanFilmsData;
   
   case 'people':
