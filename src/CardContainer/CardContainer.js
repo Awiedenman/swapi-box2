@@ -7,7 +7,8 @@ import './CardContainer.css';
 export const CardContainer = ({ cardInfo, toggleFavorite, category, favorites }) => {
   // console.log('cardInfo', cardInfo);
   
-  let displayCards = [];
+  let displayCards;
+  
   if ( cardInfo ){
     displayCards = cardInfo.map(( card, index )=> {
       return ( <Card
@@ -34,5 +35,6 @@ export const CardContainer = ({ cardInfo, toggleFavorite, category, favorites })
 CardContainer.propTypes = {
   cardInfo: PropTypes.array,
   toggleFavorite: PropTypes.func,
-  category: PropTypes.string
+  category: PropTypes.string,
+  favorites: PropTypes.array
 };

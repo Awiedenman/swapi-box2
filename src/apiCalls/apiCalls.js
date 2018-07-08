@@ -5,12 +5,15 @@ export const starWarsData = async ( category ) => {
   const url = `https://swapi.co/api/${category}`;
   try {
     const response = await fetch(url);
+    
     if (response.status === 200) {
     // console.log(response);
       const data = await response.json();
+
       // console.log(data);
       return await cleaner( data, category);
-    } else throw new Error( response.status );
+    } else 
+      throw new Error( response.status );
   } catch ( error ) {
     throw error;
   }

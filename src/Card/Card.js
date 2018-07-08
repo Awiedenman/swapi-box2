@@ -2,7 +2,7 @@ import React from 'react';
 import './Card.css';
 import PropTypes from 'prop-types';
 
-export const Card = ({ card, toggleFavorite, cardKey, favorites }) => {
+export const Card = ({ card, toggleFavorite, favorites }) => {
   // console.log('card ', card)
   const createCards = Object.keys(card.data).map(( cardItem, index ) => {
     return (
@@ -14,11 +14,11 @@ export const Card = ({ card, toggleFavorite, cardKey, favorites }) => {
     );
   });
 
-  const selected = favorites.filter(favorite => favorite.cardKey === cardKey).length === 1;
+  const selected = favorites.filter(favorite => favorite.name === card.name).length === 1;
       
   return (
     <div className={`card ${selected ? ' clicked' : ''}`}>
-      <div onClick={ () => toggleFavorite( card, cardKey) }> ★ </div>
+      <div onClick={ () => toggleFavorite( card) }> ★ </div>
       <h1>{card.name}</h1>
       {createCards}
     </div>
@@ -28,6 +28,6 @@ export const Card = ({ card, toggleFavorite, cardKey, favorites }) => {
 Card.propTypes = {
   card: PropTypes.object,
   toggleFavorite: PropTypes.func,
-  cardKey: PropTypes.string
+  favorites: PropTypes.array
 };
 

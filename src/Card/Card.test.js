@@ -5,6 +5,7 @@ import { shallow } from 'enzyme';
 describe('Card', () => {
 
   it('should match the snapshot of the card when rendered', () => {
+    
     const mockCard = {
       name: "Sand Crawler", 
       data: {
