@@ -10,7 +10,7 @@ class App extends Component {
     super( props );
     this.state = {
       category: '',
-      openingFilmScroll: {},
+      films:[],
       people: [],
       planets: [],
       vehicles: [],
@@ -20,18 +20,14 @@ class App extends Component {
   }
 
   setCategory = async( name ) => {
-    // console.log(name)
     await this.setState({ category: name});
-    // console.log(this.state);
     if (this.state.category !== 'favorites'){
       const categoryData = await starWarsData(name);
-      // console.log(categoryData)
-      await this.setState({ [name] : [...categoryData], openingFilmScroll : {}});
+      await this.setState({ [name] : [...categoryData], films : []});
     }
   }
   
   toggleFavorite = (card) => {
-    // console.log('card', card, 'cardKey', cardKey);
     const hasKey = this.state.favorites.filter( favorite => {
       return favorite.name === card.name;
     });
@@ -48,11 +44,12 @@ class App extends Component {
   async componentDidMount() {
     const randomNum = Math.floor(Math.random() * 6) + 1;
     const response = await starWarsData('films');
-    await this.setState({openingFilmScroll: { ...response[randomNum] }});
+    await this.setState({films: [response[randomNum]]});
   }
   
 
   render() {
+    const films = this.state.films;
     return (
       <div className="App">
         {/* <h2>{this.state.errorStatus}</h2> */}
@@ -60,19 +57,20 @@ class App extends Component {
           <h1 className="App-title">SWapi-Box</h1>
           <ButtonContainer
             setCategory ={ this.setCategory  }
+            favorites={ this.state.favorites }
           />
         </header>
-        {this.state.openingFilmScroll && 
-        <Landing 
-          films ={ this.state.openingFilmScroll }
-        />}
-        <p className="App-intro"></p>
-        <CardContainer 
-          cardInfo={ this.state[this.state.category] }
-          toggleFavorite={ this.toggleFavorite }
-          category={ this.state.category }
-          favorites={ this.state.favorites }
-        /> 
+        {films.length ? (
+          <Landing 
+            films ={ this.state.films }
+          />) : (
+        // <p className="App-intro"></p>
+          <CardContainer 
+            cardInfo={ this.state[this.state.category] }
+            toggleFavorite={ this.toggleFavorite }
+            category={ this.state.category }
+            favorites={ this.state.favorites }
+          />)}
       </div>
     );
   }

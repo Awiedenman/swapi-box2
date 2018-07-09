@@ -35,10 +35,9 @@ describe('CardContainer', () => {
 
     const wrapper = shallow(
       <CardContainer
-        // cardInfo={ mockCard }
-        // toggleFavorite={ jest.fn() }
-        // category={ mockCategory }
-        // favorites={ mockFavorites }
+        toggleFavorite={ jest.fn() }
+        category={ mockCategory }
+        favorites={ mockFavorites }
       />
     );
 

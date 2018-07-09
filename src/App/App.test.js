@@ -35,7 +35,7 @@ describe('App', () => {
   it('should have and intial state', () => {
     const mockState = {
       category: '',
-      openingFilmScroll: {},
+      films: [],
       people: [],
       planets: [],
       vehicles: [],

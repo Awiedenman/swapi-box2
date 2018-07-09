@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '../Button/Button';
 import PropTypes from 'prop-types';
 
-export const ButtonContainer = ( { setCategory  } ) => {
+export const ButtonContainer = ( { setCategory, favorites  } ) => {
   return (
     <div>
       <Button 
@@ -21,6 +21,7 @@ export const ButtonContainer = ( { setCategory  } ) => {
         name='favorites'
         setCategory ={ setCategory  }
       />
+      <div className='counter'>{'FAVORITES' + ':  ' + favorites.length}</div>
     </div>
   );
 };

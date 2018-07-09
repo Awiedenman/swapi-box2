@@ -17,8 +17,8 @@ export const Card = ({ card, toggleFavorite, favorites }) => {
   const selected = favorites.filter(favorite => favorite.name === card.name).length === 1;
       
   return (
-    <div className={`card ${selected ? ' clicked' : ''}`}>
-      <div onClick={ () => toggleFavorite( card) }> ★ </div>
+    <div className={`card ${selected ? 'clicked' : ''}`}>
+      <button className='star' onClick={ () => toggleFavorite( card) }> Add Favorite </button>
       <h1>{card.name}</h1>
       {createCards}
     </div>

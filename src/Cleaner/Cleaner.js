@@ -2,19 +2,19 @@
 import { personHomeworld, personHomeworldPopulation, personHomeworldSpecies, planetResidents } from '../apiCalls/apiCalls';
 
 const cleaner = ( data, category ) => {
-  // console.log(data)
+  
   switch (category) {
     
   case 'films':
 
     var cleanFilmsData = data.results.map( film  => { 
-      // console.log(film)
       return {
         'title': film.title,
         'opening_crawl': film.opening_crawl,
         'release_date': film.release_date
       };
     });
+    
     return cleanFilmsData;
   
   case 'people':
@@ -29,7 +29,7 @@ const cleaner = ( data, category ) => {
         }
       };
     });
-    // console.log(cleanPeopleData)
+
     return Promise.all(cleanPeopleData);
 
   case 'planets':
@@ -56,7 +56,7 @@ const cleaner = ( data, category ) => {
   case 'vehicles':
 
     var cleanVehicleData = data.results.map( vehicle => {
- console.log(data)
+
       return {
         'name': vehicle.name,
         'data': {
@@ -66,6 +66,7 @@ const cleaner = ( data, category ) => {
         }
       }; 
     });
+
     return cleanVehicleData;
     // console.log(cleanVehicleData);
 

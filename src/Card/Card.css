@@ -5,8 +5,9 @@
   margin: 25px;
   width: 200px;
   height: 400px;
-  border: 1px #000 solid;
+  border: 1px rgb(196, 196, 196) solid;
   box-shadow: 1px 1px 1px 1px;
+  background-color: #fff;
 }
 
 .cardItem {
@@ -18,3 +19,8 @@
 .clicked {
   border: 10px yellow solid;
 }
+
+.star:hover  {
+  background-color: yellow;
+}
+

@@ -28,9 +28,7 @@ export const CardContainer = ({ cardInfo, toggleFavorite, category, favorites })
       { displayCards } 
     </div>
   );
-
 };
-
 
 CardContainer.propTypes = {
   cardInfo: PropTypes.array,
