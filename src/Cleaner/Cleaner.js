@@ -68,7 +68,7 @@ const cleaner = ( data, category ) => {
     });
 
     return cleanVehicleData;
-    // console.log(cleanVehicleData);
+
 
   default: return 'Sorry, we could not return you your requested data at this time ';
   }

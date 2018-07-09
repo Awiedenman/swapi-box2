@@ -193,16 +193,16 @@ describe('cleaner', () => {
         }]
     };
 
-    const mockCleanData = {
+    const mockCleanData = [{
       name: "Sand Crawler",
       data:
         { Class: "wheeled",
           Model: "Digger Crawler",
           NumberOfPassengers: "30"
         } 
-    };
+    }];
 
-    const result = cleaner(mockDirtyData, 'vehilces');
+    const result = cleaner(mockDirtyData, 'vehicles');
 
     expect(result).toEqual(mockCleanData);
   });
