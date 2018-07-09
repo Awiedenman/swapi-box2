@@ -27,5 +27,6 @@ export const ButtonContainer = ( { setCategory, favorites  } ) => {
 };
 
 ButtonContainer.propTypes = {
-  setCategory: PropTypes.func
+  setCategory: PropTypes.func,
+  favorites: PropTypes.array
 };
