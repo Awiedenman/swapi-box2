@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './Landing.css';
 
 export const Landing = ({films}) => {
+  console.log(films)
   return (
     <div className ="fade">
       <section className="star-wars">

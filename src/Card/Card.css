@@ -19,3 +19,8 @@
 .clicked {
   border: 10px yellow solid;
 }
+
+.star:hover  {
+  background-color: yellow;
+}
+

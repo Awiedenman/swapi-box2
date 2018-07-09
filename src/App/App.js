@@ -20,18 +20,14 @@ class App extends Component {
   }
 
   setCategory = async( name ) => {
-    // console.log(name)
     await this.setState({ category: name});
-    // console.log(this.state);
     if (this.state.category !== 'favorites'){
       const categoryData = await starWarsData(name);
-      // console.log(categoryData)
       await this.setState({ [name] : [...categoryData], films : []});
     }
   }
   
   toggleFavorite = (card) => {
-    // console.log('card', card, 'cardKey', cardKey);
     const hasKey = this.state.favorites.filter( favorite => {
       return favorite.name === card.name;
     });
@@ -48,10 +44,7 @@ class App extends Component {
   async componentDidMount() {
     const randomNum = Math.floor(Math.random() * 6) + 1;
     const response = await starWarsData('films');
-    console.log(response)
     await this.setState({films: [response[randomNum]]});
-    console.log(this.state.films);
-    
   }
   
 
@@ -64,6 +57,7 @@ class App extends Component {
           <h1 className="App-title">SWapi-Box</h1>
           <ButtonContainer
             setCategory ={ this.setCategory  }
+            favorites={ this.state.favorites }
           />
         </header>
         {films.length ? (
