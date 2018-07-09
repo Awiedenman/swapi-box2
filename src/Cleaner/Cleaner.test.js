@@ -163,7 +163,7 @@ describe('cleaner', () => {
   });
 
 
-  it.skip('should return the correct data when passed the argument of vehicles', () => {
+  it('should return the correct data when passed the argument of vehicles', () => {
 
     const mockDirtyData = {
       count: 39, 

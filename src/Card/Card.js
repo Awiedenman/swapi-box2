@@ -3,7 +3,6 @@ import './Card.css';
 import PropTypes from 'prop-types';
 
 export const Card = ({ card, toggleFavorite, favorites }) => {
-  // console.log('card ', card)
   const createCards = Object.keys(card.data).map(( cardItem, index ) => {
     return (
       <p 
